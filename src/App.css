@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+body {
+  margin: 20px;
+  background-color: #e9e9e9;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mainContent {
+  background-color: white;
+  max-width: 1080px; 
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.radio {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.kgPicker {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 300px) {
+  .radio {
+    max-width: 250px;
+  }
+  .kgPicker {
+    max-width: 300px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (min-width: 600px) {
+  .kgPicker {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 700px) {
+  .radio {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .kgPicker {
+    max-width: 600px;
+  }
+}
+
+.flexcol {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.radio__input {
+  display: none;
+}
+
+.radio__label {
+  margin: 5px;
+  background-color: #D1CEC5;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.1s;
+}
+
+.square {
+  display: block;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.box {
+  display: block;
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio__input:checked + .radio__label {
+  background-color: #241C1C;
+  font-weight: bold;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.textinput {
+  border-radius: 15px;
+  padding: 10px;
+  border: none;
+  background-color: #e9e9e9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.important_button {
+  border:none;
+  background-color: #241C1C;
+  font-weight: bold;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
 }
