@@ -95,9 +95,9 @@ body {
   color: white;
   background-color: black;
   padding: 20px;
-  max-width: fit-content;
-  border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  max-width: fit-content;
 }
 
 .login_line_one {
@@ -141,6 +141,8 @@ body {
   }
   .login_content {
     max-width: 50%;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0px;
   }
 }
 
