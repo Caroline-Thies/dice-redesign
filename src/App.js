@@ -1,10 +1,10 @@
-import './App.css';
-import CreateCharacter from './views/CreateCharacter';
+import "./App.css";
+import LoginView from "./views/LoginView";
 
 function App() {
   return (
-    <div className='mainContent'>
-      <CreateCharacter></CreateCharacter>
+    <div className="mainContent">
+      <LoginView></LoginView>
     </div>
   );
 }
