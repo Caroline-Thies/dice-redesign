@@ -23,8 +23,10 @@ export default function AppView(props) {
 
     const rollDice = () => {
         let result = []
-        for (let i = 0; i < toRoll; i++) {
-            result[i] = Math.floor(Math.random() * 6) + 1;
+        let index = 0;
+        while (index < toRoll || result[index-1] === 6) {
+            result[index] = Math.floor(Math.random() * 6) + 1;
+            index++
         }
         setDiceResult(result)
         setShowDiceResult(true)
