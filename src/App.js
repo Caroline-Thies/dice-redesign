@@ -1,10 +1,10 @@
 import "./App.css";
-import CharacterOverview from "./views/CharacterOverview";
+import Home from "./views/Home";
 
 function App() {
   return (
     <div className="mainContent">
-      <CharacterOverview characters={["Mila", "Lila", "General Mumm"]}/>
+      <Home selectedCharacter={"Mila"} recentlyUsed={["Persönliche Zeit", "Gehirnwäsche"]} />
     </div>
   );
 }

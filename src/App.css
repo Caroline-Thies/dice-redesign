@@ -167,6 +167,43 @@ body {
   font-weight: bold;
 }
 
+.imageTextCard {
+  border-radius: 20px;
+  width: 150px;
+  height: 170px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px;
+}
+
+.imageTextCard-Image {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageTextCard-Text {
+  background-color: #D1CEC5;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.furtherActionsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.recentlyUsedContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 @media (min-width: 300px) {
   .radio {
     max-width: 250px;
