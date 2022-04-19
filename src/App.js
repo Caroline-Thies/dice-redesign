@@ -1,5 +1,5 @@
 import "./App.css";
-import AppView from "./views/AppView"
+import ConcentrationView from "./views/ConcentrationView"
 
 const app = {
   name : "Persönliche Zeit",
@@ -15,7 +15,7 @@ const char = {
 function App() {
   return (
     <div className="mainContent">
-      <AppView app={app} character={char} kgLevel={8}/>
+      <ConcentrationView wisdom={5}/>
     </div>
   );
 }
