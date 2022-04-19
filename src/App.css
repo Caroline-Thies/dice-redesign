@@ -103,6 +103,15 @@ body {
   width: 200px;
 }
 
+.standart_button {
+  border: none;
+  background-color: #D1CEC5;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  width: 200px;
+}
+
 .login_content_background {
   background-color: #222;
   padding: 20px;

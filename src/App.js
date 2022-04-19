@@ -1,10 +1,10 @@
 import "./App.css";
-import LoginView from "./views/LoginView";
+import CharacterOverview from "./views/CharacterOverview";
 
 function App() {
   return (
     <div className="mainContent">
-      <LoginView></LoginView>
+      <CharacterOverview characters={["Mila", "Lila", "General Mumm"]}/>
     </div>
   );
 }
