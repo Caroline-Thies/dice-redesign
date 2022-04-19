@@ -24,7 +24,10 @@ export default function Home(props) {
     return <div className="flexcol">
         <h1>Du spielst {characterName}</h1>
         <div>
-            {recentlyUsedApps()}
+            <h4>Kürzlich eingesetzt</h4>
+            <div className="recentlyUsedContainer">
+                {props.recentlyUsed.map((app, index) => <ImageTextCard text={app} key={index} />)}
+            </div>
         </div>
         <div>
             <h4>Weitere Aktionen</h4>

@@ -37,6 +37,13 @@ body {
   align-items: center;
 }
 
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
 .radio__input {
   display: none;
 }
@@ -196,6 +203,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  max-width: 340px;
 }
 
 .recentlyUsedContainer {
@@ -238,6 +246,9 @@ body {
   }
   .login_form_container {
     flex-grow: 2;
+  }
+  .furtherActionsContainer {
+    max-width: fit-content;
   }
 }
 
