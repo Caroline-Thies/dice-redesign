@@ -37,11 +37,10 @@ body {
   align-items: center;
 }
 
-.contentColumn {
+.flexrow {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  margin: 20px;
 }
 
 .radio__input {
@@ -212,6 +211,30 @@ body {
   flex-wrap: wrap;
 }
 
+.appDescription {
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  padding: 10px;
+  margin: 10px;
+  max-width: 400px;
+}
+
+.textContainer {
+  max-width: 400px;
+}
+
+.die {
+  border: solid 1px;
+  border-radius: 3px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #D1CEC5;
+}
+
 @media (min-width: 300px) {
   .radio {
     max-width: 250px;
@@ -249,6 +272,12 @@ body {
   }
   .furtherActionsContainer {
     max-width: fit-content;
+  }
+  .appDescription {
+    max-width: 500px;
+  }
+  .textContainer {
+    max-width: 500px;
   }
 }
 

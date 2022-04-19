@@ -12,8 +12,16 @@ export default function NumberPicker(props) {
         props.onChange(value)
     }
 
+    const getOptions = () => {
+        if (!props.startsWithZero) {
+            return [...Array(props.max).keys()]
+        } else {
+            return [-1].concat([...Array(props.max).keys()]) 
+        }
+    }
+
     return (
-        <div className="radio">{[...Array(props.max).keys()].map(i =>
+        <div className="radio">{getOptions().map(i =>
             {
             let value = i + 1
             let key = name + value
