@@ -26,7 +26,7 @@ export default function Home(props) {
         <div>
             <h4>Kürzlich eingesetzt</h4>
             <div className="recentlyUsedContainer">
-                {props.recentlyUsed.map((app, index) => <ImageTextCard text={app} key={index} />)}
+                {recentlyUsedApps()}
             </div>
         </div>
         <div>
