@@ -47,9 +47,22 @@ body {
   display: none;
 }
 
+.radio__input__disabled {
+  display: none;
+}
+
 .radio__label {
   margin: 5px;
   background-color: #d1cec5;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.1s;
+}
+
+.radio__label__disabled {
+  margin: 5px;
+  background-color: #CFCFCF;
+  color: #787878;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.1s;
