@@ -6,6 +6,7 @@ export default function NumberPicker(props) {
     const [selectedOption, setSelectedOption] = useState(selected)
 
     const name = props.name
+    const minActive = props.minActive ? props.minActive : -1
 
     const handleOptionChange = (value) => {
         setSelectedOption(value)
@@ -25,10 +26,19 @@ export default function NumberPicker(props) {
             {
             let value = i + 1
             let key = name + value
+            let disabled = value < minActive
             return (
             <div key={key} className="radioItem">
-                <input className="radio__input" type="radio" value={value} id={key} name={name} key={key+"input"} onChange={() => handleOptionChange(value)} checked={value === selectedOption} />
-                <label className="radio__label square noselect" htmlFor={key} key={key+"label"}>{value}</label>
+                <input 
+                    className="radio__input"
+                    type="radio" 
+                    value={value} id={key} 
+                    name={name} 
+                    key={key+"input"} 
+                    onChange={() => handleOptionChange(value)} 
+                    checked={value === selectedOption} 
+                    disabled={disabled}/>
+                <label className={disabled ? "radio__label__disabled square noselect" : "radio__label square noselect"} htmlFor={key} key={key+"label"}>{value}</label>
             </div> )})}
         </div>)
 }
