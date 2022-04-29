@@ -248,6 +248,26 @@ body {
   background-color: #D1CEC5;
 }
 
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+  padding: 5px;
+  align-items: center;
+}
+
+.searchBarTextInput {
+  border: none
+}
+
+.appList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 340px;
+}
+
 @media (min-width: 300px) {
   .radio {
     max-width: 250px;
@@ -292,6 +312,9 @@ body {
   .textContainer {
     max-width: 500px;
   }
+  .appList {
+    max-width: 510px;
+  }
 }
 
 @media (min-width: 1000px) {
@@ -304,5 +327,8 @@ body {
   .login_content_text {
     max-width: 70%;
     font-size: 20px;
+  }
+  .appList {
+    max-width: 680px;
   }
 }
