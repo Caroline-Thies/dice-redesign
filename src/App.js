@@ -1,5 +1,5 @@
 import "./App.css";
-import ConcentrationView from "./views/ConcentrationView"
+import AppSelectView from "./views/AppSelectView";
 
 const app = {
   name : "Persönliche Zeit",
@@ -15,7 +15,16 @@ const char = {
 function App() {
   return (
     <div className="mainContent">
-      <ConcentrationView wisdom={5}/>
+      <AppSelectView knownApps={[
+        {name: "Persönliche Zeit", kraftgruppe: "Chronokinese"}, 
+        {name: "Gehirnwäsche", kraftgruppe: "Psychokinese"},
+        {name: "Unwetter", kraftgruppe: "Elektrokinese"},
+        {name: "Vergangene Weihnacht", kraftgruppe: "Chronokinese"},
+        {name: "Aufladen", kraftgruppe: "Elektrokinese"},
+        {name: "Gedankenspaß", kraftgruppe: "Chronokinese"},
+        {name: "Lavafalle", kraftgruppe: "Pyrokinese"},
+        {name: "Absorption", kraftgruppe: "Pyrokinese"}
+        ]} />
     </div>
   );
 }
