@@ -255,6 +255,13 @@ body {
   background-color: #D1CEC5;
 }
 
+
+.diceSet {
+  flex-wrap: wrap;
+  max-width: 310px;
+}
+
+
 .searchBar {
   display: flex;
   flex-direction: row;
@@ -280,6 +287,16 @@ body {
   flex-wrap: wrap;
   max-width: 340px;
   margin: 10px;
+}
+
+.failText {
+  color: red;
+  font-weight: bold;
+}
+
+.successText {
+  color: green;
+  font-weight: bold;
 }
 
 @media (min-width: 300px) {
@@ -328,6 +345,9 @@ body {
   }
   .appList {
     max-width: 510px;
+  }
+  .diceSet {
+    max-width: 600px;
   }
 }
 
