@@ -16,14 +16,14 @@ function App() {
   return (
     <div className="mainContent">
       <AppSelectView knownApps={[
-        {name: "Persönliche Zeit", kraftgruppe: "Chronokinese"}, 
-        {name: "Gehirnwäsche", kraftgruppe: "Psychokinese"},
-        {name: "Unwetter", kraftgruppe: "Elektrokinese"},
-        {name: "Vergangene Weihnacht", kraftgruppe: "Chronokinese"},
-        {name: "Aufladen", kraftgruppe: "Elektrokinese"},
-        {name: "Gedankenspaß", kraftgruppe: "Chronokinese"},
-        {name: "Lavafalle", kraftgruppe: "Pyrokinese"},
-        {name: "Absorption", kraftgruppe: "Pyrokinese"}
+        {name: "Persönliche Zeit", kraftgruppe: "Chrono"}, 
+        {name: "Gehirnwäsche", kraftgruppe: "Psycho"},
+        {name: "Unwetter", kraftgruppe: "Elektro"},
+        {name: "Vergangene Weihnacht", kraftgruppe: "Chrono"},
+        {name: "Aufladen", kraftgruppe: "Elektro"},
+        {name: "Gedankenspaß", kraftgruppe: "Chrono"},
+        {name: "Lavafalle", kraftgruppe: "Pyro"},
+        {name: "Absorption", kraftgruppe: "Pyro"}
         ]} />
     </div>
   );

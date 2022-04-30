@@ -6,10 +6,10 @@ import ImageTextCard from "./ImageTextCard"
 
 export default function AppCard(props) {
     const imgSourceByKg = {
-        "Chronokinese" : chrono,
-        "Elektrokinese" : elektro,
-        "Psychokinese" : psycho,
-        "Pyrokinese" : pyro
+        "Chrono" : chrono,
+        "Elektro" : elektro,
+        "Psycho" : psycho,
+        "Pyro" : pyro
     }
     return <ImageTextCard text={props.name} imgSource={imgSourceByKg[props.kraftgruppe]} />
 }
