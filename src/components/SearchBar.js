@@ -12,9 +12,9 @@ export default function SearchBar(props) {
     }
 
     return <div className="searchBar">
-        <img src={magnifying_glass} />
+        <img src={magnifying_glass} alt="magnifying glass" />
         <form>
             <input ref={ref} type="text" className="searchBarTextInput" placeholder="suche ..." onChange={event => props.setSearchText(event.target.value)} /> </form>
-        <img src={closeX} height={25} width={25} onClick={clearSearch}/>
+        <img src={closeX} height={25} width={25} onClick={clearSearch} alt="click here to clear search"/>
     </div>
 }
