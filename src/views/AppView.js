@@ -1,5 +1,6 @@
 import { useState } from "react"
 import NumberPicker from "../components/NumberPicker"
+import { rollD6 } from "../DiceRoller"
 
 export default function AppView(props) {
     const [availableDice, setAvailableDice] = useState(0)
@@ -22,12 +23,7 @@ export default function AppView(props) {
     const kgLevel = props.kgLevel
 
     const rollDice = () => {
-        let result = []
-        let index = 0;
-        while (index < toRoll || result[index-1] === 6) {
-            result[index] = Math.floor(Math.random() * 6) + 1;
-            index++
-        }
+        const result = rollD6(toRoll, true)
         setDiceResult(result)
         setShowDiceResult(true)
     }
