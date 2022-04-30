@@ -22,7 +22,7 @@ export default function KraftgruppenPicker(props) {
         return kraftgruppen.filter((val, i) => updatedCheckedState[i])
     }
     const handleOnChange = (position) => {
-        const updatedCheckedState = {}
+        let updatedCheckedState = []
         if(!props.radio){
             updatedCheckedState = checkedState.map((item, index) => 
                 index === position ? !item : item
