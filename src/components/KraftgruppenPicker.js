@@ -22,13 +22,23 @@ export default function KraftgruppenPicker(props) {
         return kraftgruppen.filter((val, i) => updatedCheckedState[i])
     }
     const handleOnChange = (position) => {
-        const updatedCheckedState = checkedState.map((item, index) => 
-            index === position ? !item : item
-        )
+        const updatedCheckedState = {}
+        if(!props.radio){
+            updatedCheckedState = checkedState.map((item, index) => 
+                index === position ? !item : item
+            )
+        } else {
+            for (let i = 0; i < kraftgruppen.length; i++) {
+                if (i === position) {
+                    updatedCheckedState[i] = true
+                } else {
+                    updatedCheckedState[i] = false
+                }
+            }
+        }
         setCheckedState(updatedCheckedState)
         props.updateSelectedKraftgruppen(getSelectedKraftgruppen(updatedCheckedState))
     }
-    
 
     return (
         <div className="kgPicker">
@@ -40,7 +50,7 @@ export default function KraftgruppenPicker(props) {
             return (
             <div key={key}>
                 <input className="radio__input" type="checkbox" value={value} id={key} name={name} onChange={() => handleOnChange(index)} checked={checkedState[index]} />
-                <label className="radio__label box noselect" id={key} htmlFor={key}>{value}</label>
+                <label className="radio__label box noselect"  htmlFor={key}>{value}</label>
             </div> )})}
         </div>
     )
