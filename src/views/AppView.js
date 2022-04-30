@@ -1,4 +1,5 @@
 import { useState } from "react"
+import DiceRollResult from "../components/DiceRollResult"
 import NumberPicker from "../components/NumberPicker"
 import { rollD6 } from "../DiceRoller"
 
@@ -48,9 +49,7 @@ export default function AppView(props) {
     const renderDiceResult = () => {
         if (showDiceResult) {
             return <div className="flexcol">
-                <div className="flexrow">
-                    {diceResult.map((result, index) => <div className="die" key={index}>{result}</div>)}
-                </div>
+                <DiceRollResult diceResult={diceResult} />
                 <p>Ergebnis: {calcDiceResult()}</p>
                 {getRollResultMessage()}
             </div>
