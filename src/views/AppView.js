@@ -49,7 +49,7 @@ export default function AppView(props) {
     const renderDiceResult = () => {
         if (showDiceResult) {
             return <div className="flexcol">
-                <DiceRollResult diceResult={diceResult} />
+                <DiceRollResult rollResult={diceResult} />
                 <p>Ergebnis: {calcDiceResult()}</p>
                 {getRollResultMessage()}
             </div>
