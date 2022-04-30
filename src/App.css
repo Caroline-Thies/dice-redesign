@@ -111,6 +111,12 @@ body {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 .important_button {
   border: none;
   background-color: #241c1c;
@@ -209,6 +215,7 @@ body {
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  text-align: center;
 }
 
 .furtherActionsContainer {
@@ -251,14 +258,20 @@ body {
 .searchBar {
   display: flex;
   flex-direction: row;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 20px;
   padding: 5px;
   align-items: center;
+  margin: 20px;
+  background-color: white;
 }
 
 .searchBarTextInput {
   border: none
+}
+
+.searchBarTextInput:focus {
+  outline: none
 }
 
 .appList {
@@ -266,6 +279,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 340px;
+  margin: 10px;
 }
 
 @media (min-width: 300px) {
