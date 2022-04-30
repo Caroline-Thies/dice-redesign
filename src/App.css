@@ -353,7 +353,7 @@ body {
 
 @media (min-width: 1000px) {
   .kgPicker {
-    max-width: 600px;
+    max-width: 540px;
   }
   .login_content_background {
     max-width: 60%;
