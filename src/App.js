@@ -1,31 +1,28 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import AppSelectView from "./views/AppSelectView";
-
-const app = {
-  name : "Persönliche Zeit",
-  minVal : 11,
-  maxVal : 15,
-  description: "Das Ziel dieser App kann in seiner persönlichen Zeit zurück gesetzt werden. Grundsätzlich handelt es sich hierbei um 1+([KS]x10) Minuten. Für [2KS] werden Minuten zu Stunden und für [4KS] werden es Tage. Dadurch kann z.B. der Zustand eines zerstörten Autos auf einen älteren Stand gebracht werden."
-}
-
-const char = {
-  wisdom: 5
-}
+import LoginView from "./views/LoginView";
+import CharacterOverview from "./views/CharacterOverview"
+import CreateCharacter from "./views/CreateCharacter"
+import Home from "./views/Home"
+import AppSelectView from "./views/AppSelectView"
+import ConcentrationView from "./views/ConcentrationView"
+import AppView from "./views/AppView"
+import ChangeKnownAppsView from "./views/ChangeKnownAppsView";
 
 function App() {
   return (
-    <div className="mainContent">
-      <AppSelectView knownApps={[
-        {name: "Persönliche Zeit", kraftgruppe: "Chrono"}, 
-        {name: "Gehirnwäsche", kraftgruppe: "Psycho"},
-        {name: "Unwetter", kraftgruppe: "Elektro"},
-        {name: "Vergangene Weihnacht", kraftgruppe: "Chrono"},
-        {name: "Aufladen", kraftgruppe: "Elektro"},
-        {name: "Gedankenspaß", kraftgruppe: "Chrono"},
-        {name: "Lavafalle", kraftgruppe: "Pyro"},
-        {name: "Absorption", kraftgruppe: "Pyro"}
-        ]} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<LoginView />} />
+        <Route path="/characters" element={<CharacterOverview />} />
+        <Route path="/createCharacter" element={<CreateCharacter />} />
+        <Route path="/:characterName" element={<Home />} />
+        <Route path="/:characterName/Apps" element={<AppSelectView />} />
+        <Route path="/:characterName/Concentrate" element={<ConcentrationView />} />
+        <Route path="/:characterName/:appName" element={<AppView />} />
+        <Route path="/:characterName/changeApps" element={<ChangeKnownAppsView />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

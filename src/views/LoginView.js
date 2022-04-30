@@ -1,6 +1,37 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import RegisterForm from "../components/RegisterForm";
+import LoginForm from "../components/LoginForm"
 
 export default function LoginView(props) {
+  const [loginMode, setLoginMode] = useState(false)
+  const navigate = useNavigate()
+
+  const showLogin = () => {
+    setLoginMode(true)
+  }
+  const showRegister = () => {
+    setLoginMode(false)
+  }
+
+  const login = () => {
+    navigate("/characters")
+  }
+
+  const register = () => {
+    navigate("/characters")
+  }
+
+  const renderForm = () => {
+    if (loginMode) {
+      return <LoginForm showRegister={showRegister} login={login} />
+    } else {
+      return <RegisterForm showLogin={showLogin} register={register} />
+    }
+  }
+
+
+
   return (
     <div className="login_page">
       <div className="login_content_background">
@@ -35,7 +66,7 @@ export default function LoginView(props) {
         </div>
       </div>
       <div className="login_form_container">
-        <RegisterForm />
+        {renderForm()}
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 import KraftgruppenPicker from "../components/KraftgruppenPicker";
 import NumberPicker from "../components/NumberPicker";
@@ -21,6 +22,7 @@ export default function CreateCharacter(props) {
     "Pyro": 1,
     "Techno": 1,
     "Tele": 1})
+    const navigate = useNavigate()
 
     const setKgValue = (kraftgruppe, value) => {
         kgValues[kraftgruppe] = value
@@ -44,7 +46,7 @@ export default function CreateCharacter(props) {
     }
 
     const submit = () => {
-        alert(wisdom + " " + selectedKraftgruppen + " " + kgValues)
+        navigate("/characters")
     }
 
     return <div className="flexcol">

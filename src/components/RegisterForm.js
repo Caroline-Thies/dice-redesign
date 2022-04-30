@@ -1,7 +1,7 @@
 export default function RegisterForm(props) {
   return (
     <div className="login_form">
-      <form className="flexcol">
+      <form className="flexcol" onSubmit={props.register}>
         <h1>Registrieren</h1>
 
         <input type="text" placeholder="E-Mail Adresse" className="textinput" />
@@ -14,7 +14,7 @@ export default function RegisterForm(props) {
         <button type="submit" className="important_button">
           Registrieren
         </button>
-        <button className="linkButton">stattdessen einloggen</button>
+        <button className="linkButton" onClick={props.showLogin}>stattdessen einloggen</button>
       </form>
     </div>
   );

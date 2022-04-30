@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom"
+
 import CharacterList from "../components/CharacterList"
 
 export default function CharacterOverview(props) {
+    const navigate = useNavigate()
 
     const selectCharacter = (character) => {
         alert("Selected Character " + character)
@@ -17,6 +20,6 @@ export default function CharacterOverview(props) {
     return <div className="flexcol">
         <h1>Charakterübersicht</h1>
         {characterList()}
-        <button className="important_button">neuen Charakter erstellen</button>
+        <button className="important_button" onClick={() => navigate("/createCharacter")}>neuen Charakter erstellen</button>
     </div>
 }
