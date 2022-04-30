@@ -1,19 +1,24 @@
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { BackendAdapter } from "../BackendAdapter"
 
 import CharacterList from "../components/CharacterList"
 
-export default function CharacterOverview(props) {
+export default function CharacterOverview() {
+    const [characterNames, setCharacterNames] = useState([])
     const navigate = useNavigate()
 
-    const selectCharacter = (character) => {
-        alert("Selected Character " + character)
+    useEffect(() => BackendAdapter.getAllCharacterNames().then(names => setCharacterNames(names)), [])
+
+    const selectCharacter = (characterName) => {
+        navigate("/"+characterName)
     }
 
     const characterList = () => {
-       if(!props.characters){
+       if(characterNames.length < 1){
            return <p>Du hast aktuell keine Charaktere.</p>
        } else {
-           return <CharacterList characters={props.characters} onClick={selectCharacter} />
+           return <CharacterList characterNames={characterNames} onClick={selectCharacter} />
        }
     }
 

@@ -1,12 +1,15 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { BackendAdapter } from "../BackendAdapter";
 
 import KraftgruppenPicker from "../components/KraftgruppenPicker";
 import NumberPicker from "../components/NumberPicker";
 import SubmitButton from "../components/SubmitButton";
 
-export default function CreateCharacter(props) {
+export default function CreateCharacter() {
     const [wisdom, setWisdom] = useState(1)
+    const [selfControl, setSelfControl] = useState(0)
+    const [name, setName] = useState("")
     const [selectedKraftgruppen, setSelectedKraftgruppen] = useState([])
     const [kgValues, setKgValues] = useState({"Anima": 1, 
     "Audio": 1, 
@@ -39,23 +42,35 @@ export default function CreateCharacter(props) {
                 {selectedKraftgruppen.map(kg => 
                 <div key={"listentry-" + kg}>
                     <h4>{kg + "kinese"}</h4>
-                    <NumberPicker max={10} name={"kgValue-" + kg} onChange={(event) => setKgValue(kg, event)} selected={kgValues[kg]}/>
+                    <NumberPicker max={12} name={"kgValue-" + kg} onChange={(event) => setKgValue(kg, event)} selected={kgValues[kg]}/>
                 </div>)}
             </>)
         } 
     }
 
-    const submit = () => {
+    const submit = async (event) => {
+        event.preventDefault()
+        const kraftgruppen = {}
+        Object.keys(kgValues).map((kg) => kg in selectedKraftgruppen ? kraftgruppen[kg + "kinese"] = kgValues[kg] : 0)
+        const character = {
+            name: name,
+            wisdom: wisdom,
+            hasPsiModule: false,
+            kraftgruppen: kraftgruppen
+        }
+        const response = await BackendAdapter.addCharacter(character)
         navigate("/characters")
     }
 
     return <div className="flexcol">
         <h1>Charakter erstellen</h1>
-        <form className="flexcol" onSubmit={submit}>
+        <form className="flexcol" onSubmit={(event) => submit(event)}>
             <h3>Name</h3>
-            <input className="textinput" type="text" placeholder="Siegfried der Sieger" />
+            <input className="textinput" type="text" placeholder="Siegfried der Sieger" onChange={event => setName(event.target.value)} />
             <h3>Wissen</h3>
-            <NumberPicker max={5} name="createCharacterWisdom" onChange={setWisdom} selected={1} />
+            <NumberPicker max={7} name="createCharacterWisdom" onChange={setWisdom} selected={1} />
+            <h3>Willenskraft</h3>
+            <NumberPicker max={12} name="createCharacterSelfControl" onChange={setSelfControl} selected={0} startsWithZero={true} />
             <h3>Bekannte Kraftgruppen</h3>
             <KraftgruppenPicker updateSelectedKraftgruppen={setSelectedKraftgruppen} />
             <KraftgruppenValueSelector />

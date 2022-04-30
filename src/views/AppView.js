@@ -1,9 +1,13 @@
 import { useState } from "react"
+import { useLocation } from "react-router-dom"
 import DiceRollResult from "../components/DiceRollResult"
 import NumberPicker from "../components/NumberPicker"
 import { rollD6 } from "../DiceRoller"
 
 export default function AppView(props) {
+    const {state} = useLocation()
+    const {app, wisdom, kraftgruppe} = state
+
     const [availableDice, setAvailableDice] = useState(0)
     const [toSacrifice, setToSacrifice] = useState(0)
     const [toRoll, setToRoll] = useState(3)
@@ -16,12 +20,12 @@ export default function AppView(props) {
     const [diceResult, setDiceResult] = useState([])
     const [showDiceResult, setShowDiceResult] = useState(false)
 
-    const name = props.app.name
-    const min = props.app.minVal
-    const max = props.app.maxVal
-    const desc = props.app.description
-    const maxConcentration = props.character.wisdom
-    const kgLevel = props.kgLevel
+    const name = app.name
+    const min = app.minValue
+    const max = app.maxValue
+    const desc = app.description
+    const maxConcentration = wisdom
+    const kgLevel = kraftgruppe
 
     const rollDice = () => {
         const result = rollD6(toRoll, true)
@@ -73,7 +77,7 @@ export default function AppView(props) {
         </div>
         <div>
             <h4>Investierte Würfel</h4>
-            <NumberPicker name="Investierte Würfel" max={kgLevel} selected={investedDice} startsWithZero={true} onChange={setInvestedDice} />
+            <NumberPicker name="Investierte Würfel" max={kgLevel + concentration + timeslessKnowledge} selected={investedDice} startsWithZero={true} onChange={setInvestedDice} />
         </div>
         <div className="textContainer">
             <p>Verfügbare Würfel: {availableDice}</p>

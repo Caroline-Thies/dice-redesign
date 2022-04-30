@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegisterForm from "../components/RegisterForm";
 import LoginForm from "../components/LoginForm"
+import { BackendAdapter } from "../BackendAdapter";
 
 export default function LoginView(props) {
   const [loginMode, setLoginMode] = useState(false)
@@ -14,8 +15,11 @@ export default function LoginView(props) {
     setLoginMode(false)
   }
 
-  const login = () => {
-    navigate("/characters")
+  const login = async (username, password) => {
+    const response = await BackendAdapter.login(username, password)
+    if (response.user) {
+      navigate("/characters")
+    }
   }
 
   const register = () => {

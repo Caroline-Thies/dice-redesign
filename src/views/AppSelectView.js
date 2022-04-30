@@ -5,20 +5,25 @@ import SearchBar from "../components/SearchBar"
 import AppCard from "../components/AppCard"
 import KraftgruppenPicker from "../components/KraftgruppenPicker"
 import { useState } from "react"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 export default function AppSelectView(props) {
+    const {state} = useLocation()
+    const {apps, kraftgruppen, wisdom} = state
+    const params = useParams()
     const [selectedKraftgruppen, setSelectedKraftgruppen] = useState([])
     const [searchText, setSearchText] = useState("")
     const [filterActive, setFilterActive] = useState(false)
- 
+    const navigate = useNavigate()
+
     const getApps = () => {
+        let kgApps = []
         if (!filterActive){
-            return props.knownApps.filter(app => app.name.includes(searchText))
+            kgApps = Array.prototype.concat.apply([], Object.values(apps))
         } else {
-            return props.knownApps.filter(app => selectedKraftgruppen.includes(app.kraftgruppe) &&
-                                        app.name.includes(searchText))
+            selectedKraftgruppen.map(kraftgruppe => kgApps = kgApps.concat(apps[kraftgruppe + "kinese"]))
         }
-        
+        return kgApps.filter(app => app.name.includes(searchText))
     }
 
     const toggleFilter = () => {
@@ -45,7 +50,11 @@ export default function AppSelectView(props) {
         if (apps.length > 0) {
             return (
             <div className="appList">
-                {apps.map(app => <AppCard name={app.name} kraftgruppe={app.kraftgruppe} key={app.name}/>)}
+                {apps.map(app => <AppCard name={app.name} 
+                                        kraftgruppe={app.kraftgruppe} 
+                                        key={app.name}
+                                        onClick={() => navigate("/" + params.characterName + "/" + app.name,
+                                         {state: {app: app, kraftgruppe: kraftgruppen[app.kraftgruppe], wisdom: wisdom}})}/>)}
             </div>
             )
         } else {
