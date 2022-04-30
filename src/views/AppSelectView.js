@@ -61,7 +61,7 @@ export default function AppSelectView(props) {
         <div className="flexcol">
             <div className="flexrow sticky">
                 <SearchBar setSearchText={setSearchText} />
-                <img src={filterIcon()} width={35} height={35} onClick={toggleFilter} />
+                <img src={filterIcon()} width={35} height={35} onClick={toggleFilter} alt="click here to toggle filter" />
             </div>
             {filterOptions()}
             {showFilterResults()}
