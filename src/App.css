@@ -340,6 +340,7 @@ body {
   .login_content_text {
     max-width: 80%;
     font-size: 18px;
+    margin-top: 30px;
   }
   .login_form_container {
     flex-grow: 2;
