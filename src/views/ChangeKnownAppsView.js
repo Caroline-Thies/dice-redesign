@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { BackendAdapter } from "../BackendAdapter";
 import AppPicker from "../components/AppPicker";
 
@@ -7,7 +7,9 @@ import KraftgruppenPicker from "../components/KraftgruppenPicker";
 
 export default function ChangeKnownAppsView() {
     const {state} = useLocation()
-    const {apps, kraftgruppen} = state
+    const {appNames, kraftgruppen} = state
+    const params = useParams()
+    const [knownApps, setKnownApps] = useState(appNames)
     const [selectedKraftgruppe, setSelectedKraftgruppe] = useState("Animakinese")
     const [appsByKraftgruppe, setAppsByKraftgruppe] = useState({"Animakinese": [], 
     "Audiokinese": [], 
@@ -34,8 +36,15 @@ export default function ChangeKnownAppsView() {
         }
     }
 
-    const updateSelectedApps = () => {
-
+    const updateSelectedApp = async (appName, selected) => {
+        await BackendAdapter.setAppLearned(params.characterName, appName, selected)
+        if (knownApps.includes(appName) === selected) {
+            return
+        } else if (selected) {
+            setKnownApps(JSON.parse(JSON.stringify(knownApps)).push(appName))
+        } else {
+            setKnownApps(knownApps.filter(name => !(name === appName)))
+        }
     }
 
     return <div className="flexcol">
@@ -43,6 +52,6 @@ export default function ChangeKnownAppsView() {
         <h4>Kraftgruppe auswählen</h4>
         <KraftgruppenPicker radio={true} updateSelectedKraftgruppen={selectKraftgruppe} />
         <h4>Apps</h4>
-        <AppPicker apps={appsByKraftgruppe[selectedKraftgruppe]} updateSelectedApps={updateSelectedApps} />
+        <AppPicker apps={appsByKraftgruppe[selectedKraftgruppe]} knownApps={knownApps} updateSelectedApp={updateSelectedApp} />
     </div>
 }
