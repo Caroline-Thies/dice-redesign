@@ -12,7 +12,8 @@ export default function Home(props) {
     const params = useParams()
     const characterName = params.characterName
     const [character, setCharacter] = useState({})
-    useEffect(() => BackendAdapter.getCharacterByName(characterName).then(char => setCharacter(char)), [])
+    const [appNames, setAppNames] = useState([])
+    useEffect(() => BackendAdapter.getCharacterByName(characterName).then(char => {setCharacter(char); setAppNames(Array.prototype.concat.apply([], Object.values(char.psiApps)).map(app => app.name))}), [])
     const navigate = useNavigate()
 
     const recentlyUsedApps = () => {
@@ -29,8 +30,6 @@ export default function Home(props) {
         }
     }
 
-    console.log(character)
-
     return <div className="flexcol">
         <h1>Du spielst {characterName}</h1>
         <div>
@@ -44,7 +43,7 @@ export default function Home(props) {
             <div className="furtherActionsContainer">
                 <ImageTextCard text="App einsetzen" imgSource={diceIcon} onClick={() => navigate("Apps", {state: {apps: character.psiApps, kraftgruppen: character.kraftgruppen, wisdom: character.wisdom}})}/>
                 <ImageTextCard text="Konzentrieren" imgSource={meditation} onClick={() => navigate("Concentrate", {state: {wisdom: character.wisdom}})} />
-                <ImageTextCard text="Apps anpassen" imgSource={fileEdit} onClick={() => navigate("changeApps", {state: {apps: character.psiApps, kraftgruppen: character.kraftgruppen}})} />
+                <ImageTextCard text="Apps anpassen" imgSource={fileEdit} onClick={() => navigate("changeApps", {state: {appNames: appNames, kraftgruppen: character.kraftgruppen}})} />
                 <ImageTextCard text={characterName + " bearbeiten"} imgSource={charEdit} />
             </div>
         </div>
