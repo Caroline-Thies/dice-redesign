@@ -1,13 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function AppPicker(props) {
     const apps = props.apps ? props.apps : []
     const [checkedState, setCheckedState] = useState(
-        new Array(apps.length).fill(false)
+        [false, false, false, false, false, false, false, false, false, false]
     )
-    const getSelectedApps = (updatedCheckedState) => {
-        return apps.filter((val, i) => updatedCheckedState[i])
-    }
+    useEffect(() => {if(props.apps.length > 0 && props.knownApps.length > 0) setCheckedState(props.apps.map(app => props.knownApps.includes(app)))}, [props.apps, props.knownApps])
     const handleOnChange = (position) => {
         let updatedCheckedState = []
         if(!props.radio){
@@ -24,9 +22,9 @@ export default function AppPicker(props) {
             }
         }
         setCheckedState(updatedCheckedState)
-        props.updateSelectedApps(getSelectedApps(updatedCheckedState))
+        props.updateSelectedApp(apps[position], updatedCheckedState[position])
     }
-    
+
     return (
         <div className="kgPicker">
             {apps.map((kg, index) =>
