@@ -113,4 +113,17 @@ export class BackendAdapter {
       ).json();
       return apps;
     }
+
+    static async setAppLearned(charName, appName, learned) {
+      const response = await (
+        await fetch(this.backendAddress + "/setAppLearned", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({characterName: charName, appName: appName, learned: learned}),
+          credentials: "include",
+        })
+      ).json();
+    }
 }
