@@ -1,40 +1,38 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegisterForm from "../components/RegisterForm";
-import LoginForm from "../components/LoginForm"
+import LoginForm from "../components/LoginForm";
 import { BackendAdapter } from "../BackendAdapter";
 
 export default function LoginView(props) {
-  const [loginMode, setLoginMode] = useState(false)
-  const navigate = useNavigate()
+  const [loginMode, setLoginMode] = useState(false);
+  const navigate = useNavigate();
 
   const showLogin = () => {
-    setLoginMode(true)
-  }
+    setLoginMode(true);
+  };
   const showRegister = () => {
-    setLoginMode(false)
-  }
+    setLoginMode(false);
+  };
 
   const login = async (username, password) => {
-    const response = await BackendAdapter.login(username, password)
+    const response = await BackendAdapter.login(username, password);
     if (response.user) {
-      navigate("/characters")
+      navigate("/characters");
     }
-  }
+  };
 
   const register = () => {
-    navigate("/characters")
-  }
+    navigate("/characters");
+  };
 
   const renderForm = () => {
     if (loginMode) {
-      return <LoginForm showRegister={showRegister} login={login} />
+      return <LoginForm showRegister={showRegister} login={login} />;
     } else {
-      return <RegisterForm showLogin={showLogin} register={register} />
+      return <RegisterForm showLogin={showLogin} register={register} />;
     }
-  }
-
-
+  };
 
   return (
     <div className="login_page">
@@ -69,9 +67,7 @@ export default function LoginView(props) {
           </div>
         </div>
       </div>
-      <div className="login_form_container">
-        {renderForm()}
-      </div>
+      <div className="login_form_container">{renderForm()}</div>
     </div>
   );
 }

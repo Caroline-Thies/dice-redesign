@@ -14,7 +14,9 @@ export default function RegisterForm(props) {
         <button type="submit" className="important_button">
           Registrieren
         </button>
-        <button className="linkButton" onClick={props.showLogin}>stattdessen einloggen</button>
+        <button className="linkButton" onClick={props.showLogin}>
+          stattdessen einloggen
+        </button>
       </form>
     </div>
   );

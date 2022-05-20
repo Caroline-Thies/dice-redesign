@@ -61,7 +61,7 @@ body {
 
 .radio__label__disabled {
   margin: 5px;
-  background-color: #CFCFCF;
+  background-color: #cfcfcf;
   color: #787878;
   cursor: pointer;
   border-radius: 5px;
@@ -140,7 +140,7 @@ body {
 
 .standart_button {
   border: none;
-  background-color: #D1CEC5;
+  background-color: #d1cec5;
   padding: 10px;
   margin: 10px;
   border-radius: 20px;
@@ -219,7 +219,7 @@ body {
 }
 
 .imageTextCard-Text {
-  background-color: #D1CEC5;
+  background-color: #d1cec5;
   height: 70px;
   display: flex;
   justify-content: center;
@@ -262,15 +262,13 @@ body {
   justify-content: center;
   align-items: center;
   margin: 5px;
-  background-color: #D1CEC5;
+  background-color: #d1cec5;
 }
-
 
 .diceSet {
   flex-wrap: wrap;
   max-width: 310px;
 }
-
 
 .searchBar {
   display: flex;
@@ -284,11 +282,11 @@ body {
 }
 
 .searchBarTextInput {
-  border: none
+  border: none;
 }
 
 .searchBarTextInput:focus {
-  outline: none
+  outline: none;
 }
 
 .appList {
