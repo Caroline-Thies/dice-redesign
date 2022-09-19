@@ -5,6 +5,7 @@ export class BackendAdapter {
 
   static async login(username, password) {
     const user = { username: username, password: password };
+    console.log(JSON.stringify(user));
     const response = await (
       await fetch(this.backendAddress + "/login", {
         method: "POST",
@@ -18,21 +19,9 @@ export class BackendAdapter {
     return response;
   }
 
-  static async logout() {
-    const response = await (
-      await fetch(this.backendAddress + "/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      })
-    ).json();
-    return response;
-  }
-
   static async register(username, password) {
     const user = { username: username, password: password };
+    alert("will attempt to register " + JSON.stringify(user));
     const response = await (
       await fetch(this.backendAddress + "/register", {
         method: "POST",
@@ -41,6 +30,20 @@ export class BackendAdapter {
         },
         credentials: "include",
         body: JSON.stringify(user),
+      })
+    ).json();
+    alert("response: " + response);
+    return response;
+  }
+
+  static async logout() {
+    const response = await (
+      await fetch(this.backendAddress + "/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
       })
     ).json();
     return response;

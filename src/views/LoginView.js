@@ -22,8 +22,8 @@ export default function LoginView(props) {
     }
   };
 
-  const register = () => {
-    navigate("/characters");
+  const register = async (username, password, passwordRepeat) => {
+    const response = await BackendAdapter.register(username, password);
   };
 
   const renderForm = () => {
