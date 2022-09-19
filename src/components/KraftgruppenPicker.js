@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function KraftgruppenPicker(props) {
+  const selected = props.selected ? props.selected : [];
   const kraftgruppen = [
     "Anima",
     "Audio",
@@ -17,9 +18,10 @@ export default function KraftgruppenPicker(props) {
     "Techno",
     "Tele",
   ];
-  const [checkedState, setCheckedState] = useState(
-    new Array(kraftgruppen.length).fill(false)
-  );
+
+  const baseCheckedState = kraftgruppen.map((kg) => selected.indexOf(kg) > -1);
+
+  const [checkedState, setCheckedState] = useState(baseCheckedState);
   const getSelectedKraftgruppen = (updatedCheckedState) => {
     return kraftgruppen.filter((val, i) => updatedCheckedState[i]);
   };

@@ -3,6 +3,7 @@ import "./App.css";
 import LoginView from "./views/LoginView";
 import CharacterOverview from "./views/CharacterOverview";
 import CreateCharacter from "./views/CreateCharacter";
+import EditCharacterView from "./views/EditCharacterView";
 import Home from "./views/Home";
 import AppSelectView from "./views/AppSelectView";
 import ConcentrationView from "./views/ConcentrationView";
@@ -17,6 +18,10 @@ function App() {
         <Route path="/characters" element={<CharacterOverview />} />
         <Route path="/createCharacter" element={<CreateCharacter />} />
         <Route path="/:characterName" element={<Home />} />
+        <Route
+          path="/:characterName/editCharacter"
+          element={<EditCharacterView />}
+        />
         <Route path="/:characterName/Apps" element={<AppSelectView />} />
         <Route
           path="/:characterName/Concentrate"

@@ -5,7 +5,6 @@ export class BackendAdapter {
 
   static async login(username, password) {
     const user = { username: username, password: password };
-    console.log(JSON.stringify(user));
     const response = await (
       await fetch(this.backendAddress + "/login", {
         method: "POST",
@@ -129,6 +128,19 @@ export class BackendAdapter {
           appName: appName,
           learned: learned,
         }),
+        credentials: "include",
+      })
+    ).json();
+  }
+
+  static async updateCharacter(character) {
+    const response = await (
+      await fetch(this.backendAddress + "/updateCharacter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(character),
         credentials: "include",
       })
     ).json();

@@ -13,17 +13,15 @@ export default function Home(props) {
   const characterName = params.characterName;
   const [character, setCharacter] = useState({});
   const [appNames, setAppNames] = useState([]);
-  useEffect(
-    () =>
-      BackendAdapter.getCharacterByName(characterName).then((char) => {
-        setCharacter(char);
-        setAppNames(
-          Array.prototype.concat
-            .apply([], Object.values(char.psiApps))
-            .map((app) => app.name)
-        );
-      }),
-    []
+  useEffect(() =>
+    BackendAdapter.getCharacterByName(characterName).then((char) => {
+      setCharacter(char);
+      setAppNames(
+        Array.prototype.concat
+          .apply([], Object.values(char.psiApps))
+          .map((app) => app.name)
+      );
+    })
   );
   const navigate = useNavigate();
 
@@ -63,6 +61,7 @@ export default function Home(props) {
                   apps: character.psiApps,
                   kraftgruppen: character.kraftgruppen,
                   wisdom: character.wisdom,
+                  selfControl: character.selfControl,
                 },
               })
             }
@@ -89,6 +88,13 @@ export default function Home(props) {
           <ImageTextCard
             text={characterName + " bearbeiten"}
             imgSource={charEdit}
+            onClick={() => {
+              navigate("editCharacter", {
+                state: {
+                  character: character,
+                },
+              });
+            }}
           />
         </div>
       </div>
