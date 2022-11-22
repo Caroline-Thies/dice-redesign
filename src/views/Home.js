@@ -21,7 +21,7 @@ export default function Home(props) {
           .apply([], Object.values(char.psiApps))
           .map((app) => app.name)
       );
-    })
+    }), [characterName]
   );
   const navigate = useNavigate();
 
