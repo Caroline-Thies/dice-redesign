@@ -7,7 +7,11 @@ While some players may enjoy manual probabilistic calculations in the heat of ba
 
 # Screenshots
 ![landing page](landingPage.png)
+---
 ![home page](homeView.png)
+---
 ![focus tool](focusView.png)
+---
 ![app selection](appSelection.png)
+---
 ![app view](appView.png)
